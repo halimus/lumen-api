@@ -51,7 +51,8 @@ class BookController extends Controller {
      */
     public function store(Request $request) { 
         $rules = $this->rules(); 
-        $validator = Validator::make($request->all(), $rules);
+        $messages = $this->messages();
+        $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors(), 'status_code'=> '400'], 400);
         }
@@ -74,7 +75,8 @@ class BookController extends Controller {
         }
         
         $rules = $this->rules(); 
-        $validator = Validator::make($request->all(), $rules);
+        $messages = $this->messages();
+        $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors(), 'status_code'=> '400'], 400);
         } 
@@ -85,6 +87,7 @@ class BookController extends Controller {
         $book->isbn = $request->input('isbn');
         $book->pages_count = $request->input('pages_count');
         $book->published_date = $request->input('published_date');
+        $book->language_id = $request->input('language_id');
         
         if($book->save()){
             //return $this->response->noContent();
@@ -106,7 +109,7 @@ class BookController extends Controller {
         if (!$book) {
             return response()->json(['error' => 'Book not found', 'status_code'=> '404'], 404);
         }
-        if($language->delete()){
+        if($book->delete()){
             //return $this->response->noContent();
             return response()->json('deleted');
         }
@@ -126,9 +129,20 @@ class BookController extends Controller {
             'author' => 'required|min:3',
             'isbn' => 'min:2',
             'pages_count' => 'required|numeric',
-            'published_date' => 'date'
+            'published_date' => 'date',
+            'language_id' => 'required|exists:languages,language_id',
         );
         return $rules;
+    }
+    
+    /*
+     * Get the validation messages that apply to the rules.
+     * @return array
+     */
+    public function messages() {
+        return [
+            'language_id.exists' => 'Not an existing language_id',
+        ];
     }
 
 }
