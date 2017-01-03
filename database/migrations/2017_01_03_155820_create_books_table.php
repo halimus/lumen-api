@@ -21,7 +21,9 @@ class CreateBooksTable extends Migration
             $table->integer('pages_count')->unsigned();
             $table->date('published_date')->nullable(); 
             $table->integer('language_id')->unsigned();
-            $table->timestamps();
+            //$table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->engine = 'InnoDB';
         });
         
