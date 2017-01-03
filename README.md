@@ -5,9 +5,15 @@ Creating simple and secure lumen-api
 
  Next step :
  
- implement limit rate
- implement ip address authaurized
- Implement pagination
+ **Next step :**
+ - implement api-token for each user
+ - implement limit rate
+ - implement ip address authaurized
+ - Implement pagination
+ 
+ 
+ 
+ 
  
 
 
