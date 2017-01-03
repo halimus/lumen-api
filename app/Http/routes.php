@@ -27,10 +27,7 @@ $app->group(['prefix' => 'api/v1'], function($app){
 
     
     //Books routes
-    $app->get('books', ['middleware' => 'auth', 'uses' => 'BookController@index']); 
-    
-    
-    //$app->get('books','BookController@index'); 
+    $app->get('books','BookController@index'); 
     $app->get('books/{id}','BookController@show');       
     $app->post('books','BookController@store');        
     $app->put('books/{id}','BookController@update');      
@@ -38,11 +35,14 @@ $app->group(['prefix' => 'api/v1'], function($app){
     
     
     //Users routes
-    $app->get('users','UsersController@index'); 
-    $app->get('users/{id}','UsersController@show');       
-    $app->post('users','UsersController@store');        
-    $app->put('users/{id}','UsersController@update');      
-    $app->delete('users/{id}','UsersController@destroy');  
+    $app->group(['middleware' => 'auth'], function($app) {
+        //$app->get('users', ['middleware' => 'auth', 'uses' => 'UsersController@index']); 
+        $app->get('users','UserController@index'); 
+        $app->get('users/{id}','UserController@show');       
+        $app->post('users','UserController@store');        
+        $app->put('users/{id}','UserController@update');      
+        $app->delete('users/{id}','UserController@destroy');  
+    });
     
 });
 

@@ -14,7 +14,7 @@ class BookController extends Controller {
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth', ['only' =>['index']]);
+        $this->middleware('auth', ['only' =>['delete']]);
     }
     
     /**
@@ -24,7 +24,8 @@ class BookController extends Controller {
      */
     public function index() {
         $books = Book::all();
-        return response()->json($books);
+        //return response()->json($books);
+        return response()->json(['result' => $books]);
     }
 
     /**
