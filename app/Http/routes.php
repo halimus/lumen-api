@@ -26,6 +26,10 @@ $app->group(['prefix' => 'api/v1'], function($app){
     $app->delete('languages/{id}','LanguageController@destroy');  //Delete Language By id
 
     //Books routes
-    
+    $app->get('books','BookController@index');           
+    $app->get('books/{id}','BookController@show');       
+    $app->post('books','BookController@store');        
+    $app->put('books/{id}','BookController@update');      
+    $app->delete('books/{id}','BookController@destroy');  
     
 });
