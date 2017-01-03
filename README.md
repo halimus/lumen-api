@@ -1,2 +1,2 @@
 # lumen-api
-Creating lumen-api for the first time
+Creating lumen-api for the first time :)
