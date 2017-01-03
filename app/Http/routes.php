@@ -25,11 +25,20 @@ $app->group(['prefix' => 'api/v1'], function($app){
     $app->put('languages/{id}','LanguageController@update');      //Update Language By id
     $app->delete('languages/{id}','LanguageController@destroy');  //Delete Language By id
 
+    
     //Books routes
     $app->get('books','BookController@index');           
     $app->get('books/{id}','BookController@show');       
     $app->post('books','BookController@store');        
     $app->put('books/{id}','BookController@update');      
     $app->delete('books/{id}','BookController@destroy');  
+    
+    
+    //Users routes
+    $app->get('users','UsersController@index');           
+    $app->get('users/{id}','UsersController@show');       
+    $app->post('users','UsersController@store');        
+    $app->put('users/{id}','UsersController@update');      
+    $app->delete('users/{id}','UsersController@destroy');  
     
 });
