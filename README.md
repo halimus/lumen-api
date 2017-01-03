@@ -3,7 +3,6 @@ Creating simple and secure lumen-api
 
 ## Still under construction
 
- Next step :
  
  **Next step :**
  - implement api-token for each user
