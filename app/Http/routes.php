@@ -27,7 +27,10 @@ $app->group(['prefix' => 'api/v1'], function($app){
 
     
     //Books routes
-    $app->get('books','BookController@index');           
+    $app->get('books', ['middleware' => 'auth', 'uses' => 'BookController@index']); 
+    
+    
+    //$app->get('books','BookController@index'); 
     $app->get('books/{id}','BookController@show');       
     $app->post('books','BookController@store');        
     $app->put('books/{id}','BookController@update');      
@@ -35,10 +38,14 @@ $app->group(['prefix' => 'api/v1'], function($app){
     
     
     //Users routes
-    $app->get('users','UsersController@index');           
+    $app->get('users','UsersController@index'); 
     $app->get('users/{id}','UsersController@show');       
     $app->post('users','UsersController@store');        
     $app->put('users/{id}','UsersController@update');      
     $app->delete('users/{id}','UsersController@destroy');  
     
 });
+
+//secure the api
+//https://code.tutsplus.com/tutorials/how-to-secure-a-rest-api-with-lumen--cms-27442
+//https://mattstauffer.co/blog/api-rate-limiting-in-laravel-5-2
