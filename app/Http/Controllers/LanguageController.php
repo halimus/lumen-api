@@ -113,4 +113,5 @@ class LanguageController extends Controller {
            return response()->json(['error' => 'could_not_delete_language', 'status_code'=> '500'], 500);
         } 
     }
+    
 }
