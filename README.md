@@ -1,4 +1,4 @@
-# lumen-api
+# lumen-api for Bookstore
 Creating simple and secure lumen-api 
 
 ## Still under construction..
