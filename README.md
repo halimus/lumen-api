@@ -23,7 +23,7 @@ Creating simple and secure lumen-api
     - 406 Not Acceptable: Returned by the Search API when an invalid format is specified in the request.
     - 500 Internal Server Error: Something is broken. Please contact us if the situation continues and your request is valid
     - 502 Bad Gateway: our server is down or being upgraded.
-    - 503 Service Unavailable: The our servers are up, but overloaded with requests. This is also the response code returned if a     book's details have been temporarily redacted
+    - 503 Service Unavailable: The our servers are up, but overloaded with requests. This is also the response code returned if a book's details have been temporarily redacted
 
  
  
